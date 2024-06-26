@@ -1,0 +1,11 @@
+.taskBox{
+    display: flex;
+    justify-content: space-between;
+    padding-inline: 50px;
+    align-items: center;
+
+    .icon:hover{
+       cursor: pointer;
+       font-size: 28px;
+    }
+}

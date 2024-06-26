@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import "./App.css";
+import BasicTextFields from './InputBox/Input';
+import Task from './InputBox/Task';
 
-function App() {
+const App = () => {
+  const [data, setData] = useState([]);
+  console.log(data);
+
+  const handleDelete = (taskToDelete) => {
+    setData(data.filter(task => task !== taskToDelete));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='mainWrapper'>
+      <h1>TO DO APPLICATION</h1>
+      <div className='taskWrapper'>
+        <BasicTextFields data={data} setData={setData} />
+        {data.length > 0 ? <div><Task data={data} handleDelete={handleDelete} /></div> : ""}
+      </div>
     </div>
   );
 }
